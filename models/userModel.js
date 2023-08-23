@@ -6,7 +6,7 @@ const historySchema = new mongoose.Schema({
 		required: true,
 		unique: true
 	},
-	_id: {
+	id: {
 		type: String,
 		required: true,
 		unique: true
@@ -28,4 +28,4 @@ const userSchema = new mongoose.Schema({
 })
 
 export const HistoryModel = mongoose.model("historyModel", historySchema)
-export const UserModer = mongoose.model("User", userSchema)
+export const UserModel = mongoose.model("User", userSchema)
