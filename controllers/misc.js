@@ -1975,6 +1975,9 @@ export const randomWordController = async (req, res) => {
 			throw Error("Internal server error.")
 		}
 	} catch (error) {
+		if (error.message == "Request failed with status code 404") {
+			return res.status(404).json({ error: error.response.data })
+		}
 		return res.status(500).json({ error: error.message })
 	}
 	// const randomWord =

@@ -12,14 +12,17 @@ export const searchController = async (req, res) => {
 
 		if (response.data) {
 			const wordData = response.data
-			res.status(201).json({ data: wordData })
+			res.status(200).json({ success: true, data: wordData })
 		} else {
 			throw Error("Internal server error.")
 		}
 	} catch (error) {
 		// console.log(error.response.data)
+		if (error.message == "Request failed with status code 404") {
+			return res.status(404).json({ success: false, error: error.response.data })
+		}
 
-		return res.status(500).json({ error: error.message })
+		return res.status(500).json({ success: false, error: error.message })
 	}
 
 	// axios
