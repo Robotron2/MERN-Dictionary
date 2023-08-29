@@ -1,31 +1,17 @@
 import mongoose from "mongoose"
 
-const historySchema = new mongoose.Schema({
-	word: {
-		type: String,
-		required: true,
-		unique: true
-	},
-	id: {
-		type: String,
-		required: true,
-		unique: true
-	}
-})
-
 const userSchema = new mongoose.Schema({
 	email: {
 		type: String,
-		required: true,
-		unique: true
+		required: true
 	},
 	password: {
 		type: String,
-		required: true,
-		unique: true
+		required: true
 	},
-	histories: [historySchema]
+	histories: []
 })
 
-export const HistoryModel = mongoose.model("historyModel", historySchema)
 export const UserModel = mongoose.model("User", userSchema)
+
+// module.exports = UserModel

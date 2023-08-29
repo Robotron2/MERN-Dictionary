@@ -15,7 +15,7 @@ router.post("/login", loginController)
 
 //go to homepage
 // router.post("/user-auth/search", requireSignIn, searchController)
-router.post("/user-auth/search", searchController)
+router.post("/user-auth/search/:id", searchController)
 
 router.get("/user-auth/random", randomWordController)
 

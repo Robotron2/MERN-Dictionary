@@ -41,7 +41,7 @@ export const registerController = async (req, res) => {
 		//create token
 		const token = createToken(user._id)
 
-		res.status(200).json({ email, token })
+		res.status(200).json({ email, token, id: user._id })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
@@ -70,39 +70,8 @@ export const loginController = async (req, res) => {
 		//create token
 		const token = createToken(user._id)
 
-		res.status(200).json({ email, token })
+		res.status(200).json({ email, token, id: user._id })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
-}
-
-const loginUser = async (req, res) => {
-	//
-	const { email, password } = req.body
-
-	try {
-		//validation
-		if (!email || !password) {
-			throw Error("All fields must be filled!")
-		}
-
-		const user = await User.findOne({ email })
-
-		if (!user) {
-			throw Error("Incorrect email")
-		}
-
-		const match = await bcrypt.compare(password, user.password)
-		if (!match) {
-			throw Error("Incorrect password")
-		}
-
-		//create token
-		const token = createToken(user._id)
-
-		res.status(200).json({ email, token })
-	} catch (error) {
-		res.status(400).json({ error: error.message })
-	}
-	// res.json({ msg: "Login successfully" })
 }
