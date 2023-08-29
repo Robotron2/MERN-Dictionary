@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Dictionary Page</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            header {
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 1rem;
+            }
+
+            .dictionary {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .dictionary-item {
+                border: 1px solid #ddd;
+                padding: 1rem;
+            }
+
+            @media (min-width: 768px) {
+                .dictionary {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media (min-width: 1200px) {
+                .dictionary {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>Dictionary</h1>
+        </header>
+        <div class="container">
+            <div class="dictionary">
+                <div class="dictionary-item">Word 1: Definition 1</div>
+                <div class="dictionary-item">Word 2: Definition 2</div>
+                <div class="dictionary-item">Word 3: Definition 3</div>
+                <!-- Add more dictionary items here -->
+            </div>
+        </div>
+    </body>
+
+</html>
