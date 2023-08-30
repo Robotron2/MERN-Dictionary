@@ -35,3 +35,31 @@ const Login = () => {
 }
 
 export default Login
+
+// const [email, setEmail] = useState("")
+// 	const [password, setPassword] = useState("")
+// 	const navigate = useNavigate()
+// 	const location = useLocation()
+// 	const [auth, setAuth] = useAuth()
+
+// 	const handleSubmit = async (e) => {
+// 		e.preventDefault()
+// 		try {
+// 			const res = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/api/v1/auth/login`, { email, password })
+// 			if (res && res.data.success) {
+// 				toast.success(res && res.data.message)
+// 				setAuth({
+// 					...auth,
+// 					user: res.data.user,
+// 					token: res.data.token
+// 				})
+// 				localStorage.setItem("auth", JSON.stringify(res.data))
+// 				navigate(location.state || `/`)
+// 			} else {
+// 				toast.error(res.data.message)
+// 			}
+// 		} catch (error) {
+// 			console.log(error)
+// 			toast.error("Something went wrong, please try again")
+// 		}
+// 	}

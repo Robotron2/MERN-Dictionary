@@ -3,6 +3,7 @@ import "./App.css"
 import HomePage from "./pages/HomePage"
 import Login from "./pages/Auth/Login"
 import Register from "./pages/Auth/Register"
+import Word from "./pages/Word"
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 
 				<Route path="/register" element={<Register />} />
 				<Route path="/login" element={<Login />} />
+				<Route path="/word" element={<Word />} />
 			</Routes>
 		</>
 	)

@@ -166,6 +166,10 @@ input {
 	background-color: #f9f9f9;
 }
 
+input:focus {
+	outline: none;
+}
+
 .login-button {
 	display: inline-block;
 	margin: 5px;
@@ -200,5 +204,67 @@ input {
 
 .login-button-outline:hover {
 	color: white;
+	background-color: #2980b9;
+}
+
+/* Word page */
+
+.form-div {
+	width: 100%;
+	margin-top: -20vh;
+	margin-bottom: 20px;
+}
+
+.form-control {
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid grey;
+	background-color: inherit;
+}
+
+.word-meaning {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+	margin: 20px 0;
+}
+
+.word-title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.definition {
+	margin-bottom: 15px;
+}
+
+.example {
+	font-style: italic;
+}
+
+@media (max-width: 768px) {
+	.word-meaning {
+		padding: 15px;
+	}
+}
+
+.bottom-right-button {
+	position: fixed;
+	z-index: 200;
+	bottom: 70px;
+	right: 20px;
+	background-color: #3498db;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.bottom-right-button:hover {
 	background-color: #2980b9;
 }
