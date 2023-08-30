@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dictionary Web App</title>
+        <style>
+            /* Reset some default styles */
+            body,
+            h1,
+            p {
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Custom styles */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f7f7f7;
+                color: #333;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            .container {
+                flex: 1;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            header {
+                background-color: #34495e;
+                color: white;
+                padding: 10px 0;
+                text-align: center;
+            }
+
+            /* ... (other styles) ... */
+
+            /* Media query for hiding nav links on mobile */
+            @media (max-width: 768px) {
+                /* ... (previous media query styles) ... */
+            }
+
+            /* Typing animation for header */
+            .typing-animation {
+                overflow: hidden;
+                /* Hide overflow to create typing effect */
+                white-space: nowrap;
+                /* Prevent line breaks */
+                border-right: 2px solid #34495e;
+                /* Blinking cursor effect */
+                animation: typing 2s steps(30) infinite, blink 0.5s infinite;
+            }
+
+            @keyframes typing {
+                from {
+                    width: 0;
+                }
+
+                to {
+                    width: 100%;
+                }
+            }
+
+            @keyframes blink {
+                50% {
+                    border-color: transparent;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1 class="typing-animation">Dictionary Web App</h1>
+            <p>Your go-to source for word meanings.</p>
+        </header>
+
+        <!-- Navbar -->
+        <nav class="navbar">
+            <a href="#" class="navbar-brand">Dictionary</a>
+            <button class="navbar-toggler">Toggle</button>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link">Home</a></li>
+                <li><a href="#" class="nav-link">Features</a></li>
+                <li><a href="#" class="nav-link">About</a></li>
+                <li><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <div class="intro">
+                <p>Welcome to our dictionary web app. Search for meanings, definitions, and more.</p>
+                <a href="#" class="cta-button">Get Started</a>
+            </div>
+
+            <div class="features" id="features">
+                <div class="feature">
+                    <div class="feature-icon">&#9788;</div>
+                    <div class="feature-title">Word Definitions</div>
+                    <p>Quickly find detailed definitions for words.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">&#128218;</div>
+                    <div class="feature-title">Synonyms & Antonyms</div>
+                    <p>Discover synonyms and antonyms for any word.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">&#128214;</div>
+                    <div class="feature-title">Word Pronunciation</div>
+                    <p>Listen to the correct pronunciation of words.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container text-center">
+                <p>&copy; 2023 Dictionary App</p>
+            </div>
+        </footer>
+
+        <script>
+            // JavaScript for toggle button and smooth scrolling
+            const navbarToggler = document.querySelector( '.navbar-toggler' );
+            const navLinks = document.querySelector( '.nav-links' );
+
+            navbarToggler.addEventListener( 'click',() => {
+                navLinks.classList.toggle( 'active' );
+            } );
+
+            // Smooth scrolling for nav links
+            const smoothScroll = target => {
+                const targetElement = document.querySelector( target );
+                window.scrollTo( {
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                } );
+            };
+
+            const navLinksArray = Array.from( document.querySelectorAll( '.nav-link' ) );
+
+            navLinksArray.forEach( link => {
+                link.addEventListener( 'click',event => {
+                    event.preventDefault();
+                    const target = link.getAttribute( 'href' );
+                    smoothScroll( target );
+                    navLinks.classList.remove( 'active' );
+                } );
+            } );
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dictionary App - Word Meaning</title>
+        <style>
+            /* Reset some default styles */
+            body,
+            h1,
+            p {
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Custom styles */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f7f7f7;
+                color: #333;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                justify-content: space-between;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+                box-sizing: border-box;
+                flex: 1;
+            }
+
+            header {
+                background-color: #34495e;
+                color: white;
+                padding: 10px 0;
+                text-align: center;
+            }
+
+            .footer {
+                background-color: #34495e;
+                color: white;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .word-meaning {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .word-title {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .meaning {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+
+            @media (max-width: 768px) {
+                .word-meaning {
+                    max-width: 90%;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>Dictionary Web App</h1>
+            <p>Your go-to source for word meanings.</p>
+        </header>
+
+        <div class="container">
+            <div class="word-meaning">
+                <h2 class="word-title">Word: Serendipity</h2>
+                <p class="meaning">
+                    The occurrence and development of events by chance in a happy or beneficial way.
+                    Serendipity is often used to describe a fortunate accident or a pleasant surprise.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2023 Dictionary App
+        </div>
+    </body>
+
+</html>

@@ -19,7 +19,7 @@ export const registerController = async (req, res) => {
 		// 	throw Error("Email is not valid")
 		// }
 		// if (!validator.isStrongPassword(password)) {
-		// 	throw Error("Password is not strong enough")
+		// 	throw Error("Password is not strong enough. Password should have at least a symbol, Uppercase and lowercase letters, a number")
 		// }
 
 		const exists = await UserModel.findOne({ email })
