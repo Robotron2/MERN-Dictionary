@@ -3,6 +3,7 @@ import Layout from "../../components/Layouts/Layout"
 import { useState } from "react"
 import axios from "axios"
 import useAuth from "./../../components/customHooks/useAuth"
+import { toast } from "react-hot-toast"
 
 const Login = () => {
 	const [email, setEmail] = useState("")
@@ -17,6 +18,7 @@ const Login = () => {
 			const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/api/v1/auth/login`, { email, password })
 			// console.log(response)
 			if (response && response.data.success) {
+				toast.success(response && response.data.message)
 				setAuth({
 					...auth,
 					user: response.data.userData,
@@ -24,11 +26,12 @@ const Login = () => {
 				})
 				localStorage.setItem("auth", JSON.stringify(response.data))
 				navigate(location.state || `/user/word`)
-			} else {
-				//
 			}
 		} catch (error) {
-			console.log(error)
+			setEmail("")
+			setPassword("")
+			toast.error(error.response.data.error)
+			console.log(error.response.data.error)
 		}
 	}
 

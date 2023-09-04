@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import Layout from "../../components/Layouts/Layout"
 import axios from "axios"
 import { useState } from "react"
@@ -163,9 +163,9 @@ const Word = () => {
 						</aside>
 					)}
 
-					<Link to={"/user/history"}>
+					{/* <Link to={"/user/history"}>
 						<button className="bottom-right-button">History</button>
-					</Link>
+					</Link> */}
 				</div>
 			</Layout>
 		</>
