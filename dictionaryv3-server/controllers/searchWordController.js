@@ -26,7 +26,10 @@ export const searchController = async (req, res) => {
 
 		if (response.data) {
 			const wordData = response.data
-			user.histories.push(searchedWord)
+			const match = user.histories.filter((history) => history === searchedWord)
+			if (match.length == 0) {
+				user.histories.push(searchedWord)
+			}
 			await user.save()
 			res.status(200).json({ success: true, data: wordData })
 		} else {

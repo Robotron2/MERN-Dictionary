@@ -3,7 +3,9 @@ import "./App.css"
 import HomePage from "./pages/HomePage"
 import Login from "./pages/Auth/Login"
 import Register from "./pages/Auth/Register"
-import Word from "./pages/Word"
+import Word from "./pages/user/Word"
+import PrivateRoute from "./components/Routes/PrivateRoute"
+import History from "./pages/user/History"
 
 function App() {
 	return (
@@ -13,7 +15,11 @@ function App() {
 
 				<Route path="/register" element={<Register />} />
 				<Route path="/login" element={<Login />} />
-				<Route path="/word" element={<Word />} />
+
+				<Route path="/user" element={<PrivateRoute />}>
+					<Route path="word" element={<Word />} />
+					<Route path="history" element={<History />} />
+				</Route>
 			</Routes>
 		</>
 	)

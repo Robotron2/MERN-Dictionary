@@ -40,7 +40,7 @@ export const registerController = async (req, res) => {
 
 		//create token
 		const token = createToken(user._id)
-
+		const userData = { email, id: user._id }
 		res.status(200).json({ userData, token, success: true })
 	} catch (error) {
 		res.status(400).json({ error: error.message, success: false })

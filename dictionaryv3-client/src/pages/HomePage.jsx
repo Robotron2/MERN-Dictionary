@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const HomePage = () => {
 	return (
 		<Layout>
-			<div>
+			<div className="container">
 				<div className="intro">
 					<p>Welcome to our dictionary web app. Search for meanings, definitions, and more.</p>
 				</div>
