@@ -12,6 +12,7 @@ const History = () => {
 	const [isEmpty, setIsEmpty] = useState(true)
 	const [isLoading, setIsLoading] = useState(false)
 	const [history, setHistory] = useState([])
+	const [pleaseWait, setPleaseWait] = useState(false)
 	const navigate = useNavigate()
 
 	const getUserHistory = async () => {
@@ -34,6 +35,7 @@ const History = () => {
 	const handleClear = async () => {
 		try {
 			//
+			setPleaseWait(true)
 			const deletedHistory = await axios.delete(`${import.meta.env.VITE_REACT_APP_API}/api/v1/auth/delete-history/${authUserId}`)
 			console.log(deletedHistory)
 			navigate("/user/word")
@@ -76,6 +78,10 @@ const History = () => {
 						<Link to={"/user/word"}>
 							<button className="bottom-right-button">Home</button>
 						</Link>
+					</div>
+				) : pleaseWait ? (
+					<div className="container-fluid">
+						<Loading />
 					</div>
 				) : (
 					<div className="container-fluid">
