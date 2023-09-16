@@ -6,7 +6,7 @@ const HomePage = () => {
 		<Layout>
 			<div className="container">
 				<div className="intro">
-					<p>Welcome to our dictionary web app. Search for meanings, definitions, and more.</p>
+					<p>Welcome to my dictionary web app. Search for meanings, definitions, and more.</p>
 				</div>
 				<div className="cta-buttons">
 					<Link className="cta-button" to={"/login"}>

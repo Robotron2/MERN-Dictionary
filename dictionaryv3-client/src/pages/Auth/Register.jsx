@@ -42,17 +42,17 @@ const Register = () => {
 	return (
 		<>
 			<Layout title={"Register || RoboDict"}>
-				<div className="container">
-					<div className="login-container">
+				<div className="container w-100">
+					<div className="login-container w-100">
 						<h2 className="login-title">Register Here</h2>
 						<form onSubmit={handleSubmit}>
 							<div className="custom-input-group">
-								<label htmlFor="username">Email</label>
-								<input type="text" id="username" name="username" required placeholder="Enter your valid email here" onChange={(e) => setEmail(e.target.value)} />
+								{/* <label htmlFor="username">Email</label> */}
+								<input type="text" id="username" name="username" required placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
 							</div>
 							<div className="custom-input-group">
-								<label htmlFor="password">Password</label>
-								<input type="password" id="password" name="password" required placeholder="Enter your password here" onChange={(e) => setPassword(e.target.value)} />
+								{/* <label htmlFor="password">Password</label> */}
+								<input type="password" id="password" name="password" required placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
 							</div>
 							<button type="submit" className="login-button">
 								Register

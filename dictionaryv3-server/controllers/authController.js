@@ -4,7 +4,7 @@ import JWT from "jsonwebtoken"
 import validator from "validator"
 
 const createToken = (_id) => {
-	return JWT.sign({ _id }, process.env.JWT_SECRET, { expiresIn: "3d" })
+	return JWT.sign({ _id }, process.env.JWT_SECRET, { expiresIn: "1d" })
 }
 
 export const registerController = async (req, res) => {
@@ -58,6 +58,7 @@ export const loginController = async (req, res) => {
 		}
 
 		const user = await UserModel.findOne({ email })
+		console.log(user)
 
 		if (!user) {
 			throw Error("Incorrect email")

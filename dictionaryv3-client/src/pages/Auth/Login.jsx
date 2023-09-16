@@ -38,17 +38,15 @@ const Login = () => {
 	return (
 		<>
 			<Layout title={"Login || RoboDict"}>
-				<div className="container">
-					<div className="login-container">
+				<div className="container w-100">
+					<div className="login-container w-100">
 						<h2 className="login-title">Login Here</h2>
 						<form onSubmit={handleSubmit}>
 							<div className="custom-input-group">
-								<label htmlFor="username">Email</label>
-								<input type="text" placeholder="Enter your valid email here" onChange={(e) => setEmail(e.target.value)} value={email} required />
+								<input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} required />
 							</div>
 							<div className="custom-input-group">
-								<label htmlFor="password">Password</label>
-								<input type="password" placeholder="Enter your password here" onChange={(e) => setPassword(e.target.value)} value={password} required />
+								<input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} required />
 							</div>
 							<button type="submit" className="login-button">
 								Login

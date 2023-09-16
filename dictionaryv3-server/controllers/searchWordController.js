@@ -44,3 +44,23 @@ export const searchController = async (req, res) => {
 		return res.status(500).json({ success: false, error: error.message })
 	}
 }
+
+export const historyController = async (req, res) => {
+	const { id } = req.params
+	try {
+		if (!id) {
+			throw Error("Valid id must be provided")
+		}
+		const user = await UserModel.findById(id)
+		if (user) {
+			res.status(200).json({
+				success: true,
+				histories: user.histories
+			})
+		}
+	} catch (error) {
+		res.status(500).json({
+			error: error.message
+		})
+	}
+}

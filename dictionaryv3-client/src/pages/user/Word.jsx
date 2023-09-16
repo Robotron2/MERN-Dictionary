@@ -3,6 +3,7 @@ import Layout from "../../components/Layouts/Layout"
 import axios from "axios"
 import { useState } from "react"
 import Loading from "../../components/Loading"
+import { Link } from "react-router-dom"
 
 /* eslint-disable react/no-unescaped-entities */
 const Word = () => {
@@ -74,7 +75,7 @@ const Word = () => {
 								return (
 									<div key={i + 1}>
 										<div className="custom-class">
-											<h1 className="blue-text lighten-1 capital-first">
+											<h1 className="capital-first">
 												{result.word}
 												<span>
 													<em>{`${i + 1}  `}</em>
@@ -166,9 +167,9 @@ const Word = () => {
 						</aside>
 					)}
 
-					{/* <Link to={"/user/history"}>
+					<Link to={"/user/history"}>
 						<button className="bottom-right-button">History</button>
-					</Link> */}
+					</Link>
 				</div>
 			</Layout>
 		</>
