@@ -13,16 +13,19 @@ const Word = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
+		setFound(false)
 		try {
-			setIsLoading(true)
-			setFound(true)
 			const fetchUserData = JSON.parse(localStorage.getItem("auth")).userData
 			const { id } = fetchUserData
+			setIsLoading(true)
 			// console.log(id)
 
 			const result = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/api/v1/auth/user-auth/search/${id}`, { searchedWord: search })
 
-			if (result.statusText == "OK") {
+			// console.log(result)
+			// // console.log(result.data.data)
+			// // setResults(result.data.data)
+			if (result.status == 200) {
 				setResults(result.data.data)
 				setFound(true)
 			} else if (result.statusText == "Not Found") {
@@ -55,7 +58,7 @@ const Word = () => {
 					</div>
 
 					{isLoading && <Loading />}
-					{!found && (
+					{!isLoading && !found && (
 						<div>
 							<div className="">
 								<h4 className="flow-text">No Definitions Found...</h4>
@@ -65,7 +68,7 @@ const Word = () => {
 						</div>
 					)}
 
-					{!isLoading && found && (
+					{found && (
 						<aside>
 							{results.map((result, i) => {
 								return (
