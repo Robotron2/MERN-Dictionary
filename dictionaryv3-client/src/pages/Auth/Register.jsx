@@ -4,6 +4,7 @@ import { useState } from "react"
 import useAuth from "../../components/customHooks/useAuth"
 import axios from "axios"
 import { toast } from "react-hot-toast"
+import Spinner from "../../components/Spinner"
 
 const Register = () => {
 	const [email, setEmail] = useState("")
@@ -11,10 +12,12 @@ const Register = () => {
 	const navigate = useNavigate()
 	const location = useLocation()
 	const [auth, setAuth] = useAuth()
+	const [pleaseWait, setPleaseWait] = useState(false)
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
+			setPleaseWait(true)
 			const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/api/v1/auth/register`, { email, password })
 			// console.log(response)
 			if (response && response.data.success) {
@@ -30,10 +33,12 @@ const Register = () => {
 				setEmail("")
 				setPassword("")
 				toast.error(response.data.message)
+				setPleaseWait(false)
 			}
 		} catch (error) {
 			setEmail("")
 			setPassword("")
+			setPleaseWait(false)
 			toast.error(error.response.data.error)
 			console.log(error.response.data.error)
 		}
@@ -52,15 +57,20 @@ const Register = () => {
 							<div className="custom-input-group">
 								<input type="password" id="password" name="password" required placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
 							</div>
-							<button type="submit" className="login-button">
-								Register
-							</button>
+							{!pleaseWait && (
+								<div>
+									<button type="submit" className="login-button">
+										Register
+									</button>
 
-							<Link to={"/login"}>
-								<button type="submit" className="login-button-outline">
-									Login
-								</button>
-							</Link>
+									<Link to={"/login"}>
+										<button type="submit" className="login-button-outline">
+											Login
+										</button>
+									</Link>
+								</div>
+							)}
+							{pleaseWait && <Spinner />}
 						</form>
 					</div>
 				</div>
