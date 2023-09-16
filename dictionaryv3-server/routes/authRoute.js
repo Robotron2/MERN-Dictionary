@@ -1,7 +1,7 @@
 import express from "express"
 import { loginController, registerController } from "../controllers/authController.js"
 import { requireSignIn } from "../middlewares/authMiddleware.js"
-import { historyController, searchController } from "../controllers/searchWordController.js"
+import { deleteHistoryController, historyController, searchController } from "../controllers/searchWordController.js"
 import { randomWordController } from "../controllers/misc.js"
 
 const router = express.Router()
@@ -20,6 +20,7 @@ router.get("/user-auth", requireSignIn, (req, res) => {
 })
 
 router.get(`/history/:id`, historyController)
+router.delete(`/delete-history/:id`, deleteHistoryController)
 
 // router.post("/user-auth/search", requireSignIn, searchController)
 router.post("/user-auth/search/:id", searchController)

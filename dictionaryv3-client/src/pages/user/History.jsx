@@ -3,7 +3,7 @@ import axios from "axios"
 import useAuth from "../../components/customHooks/useAuth"
 import { useEffect, useState } from "react"
 import Layout from "../../components/Layouts/Layout"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Loading from "../../components/Loading"
 
 const History = () => {
@@ -12,6 +12,7 @@ const History = () => {
 	const [isEmpty, setIsEmpty] = useState(true)
 	const [isLoading, setIsLoading] = useState(false)
 	const [history, setHistory] = useState([])
+	const navigate = useNavigate()
 
 	const getUserHistory = async () => {
 		setIsLoading(true)
@@ -30,6 +31,17 @@ const History = () => {
 		}
 	}
 
+	const handleClear = async () => {
+		try {
+			//
+			const deletedHistory = await axios.delete(`${import.meta.env.VITE_REACT_APP_API}/api/v1/auth/delete-history/${authUserId}`)
+			console.log(deletedHistory)
+			navigate("/user/word")
+		} catch (error) {
+			//
+		}
+	}
+
 	useEffect(() => {
 		getUserHistory()
 	}, [])
@@ -40,69 +52,41 @@ const History = () => {
 				<div className="container-fluid">
 					<h2 className="text-center hist">Histories</h2>
 				</div>
-				{isLoading && <Loading />}
+				{isEmpty && (
+					<div>
+						<center>
+							<p>No searched words yet.</p>
+						</center>
+					</div>
+				)}
+				{isLoading && !isEmpty && <Loading />}
 				<center>
 					<div className="history-container">
 						{history.map((h, i) => {
 							return (
-								<Link key={i + 1}>
+								<Link to={`/user/history/${h}`} key={i + 1}>
 									<p>{h}</p>
 								</Link>
 							)
 						})}
 					</div>
 				</center>
-				{/* <div className="container-fluid">
-					<Link to={"/"}>
-						<button className="bottom-right-button">Clear All</button>
-					</Link>
-				</div> */}
-
-				{/* <div className="container">
-					{
-						<table className="table">
-							<tbody>
-								
-							</tbody>
-						</table>
-					}
-					<table></table>
-				</div> */}
+				{isEmpty ? (
+					<div className="container-fluid">
+						<Link to={"/user/word"}>
+							<button className="bottom-right-button">Home</button>
+						</Link>
+					</div>
+				) : (
+					<div className="container-fluid">
+						<button className="bottom-right-button" onClick={handleClear}>
+							Clear All
+						</button>
+					</div>
+				)}
 			</Layout>
 		</>
 	)
 }
-{
-	/* <table className="table">
-<tbody>
-    return (
-    <Link key={i + 1}>
-        <tr>{h}</tr>
-    </Link>
-    )
-</tbody>
-</table> */
-}
 
 export default History
-
-// const SearchHistory = () => {
-// 	const searchedWords = JSON.parse(localStorage.getItem("history"))
-// 	return (
-// 		<motion.div className="row " animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-// 			{searchedWords.map((searchedWord, index) => {
-// 				return (
-// 					<div className="col s6 m3" key={index + 1}>
-// 						<Link to={`/search/${searchedWord}`}>
-// 							<div className="card-panel light-blue lighten-3 myrowclass">
-// 								<span className="white-text">{searchedWord}</span>
-// 							</div>
-// 						</Link>
-// 					</div>
-// 				)
-// 			})}
-// 		</motion.div>
-// 	)
-// }
-
-// export default SearchHistory

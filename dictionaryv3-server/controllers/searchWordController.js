@@ -64,3 +64,23 @@ export const historyController = async (req, res) => {
 		})
 	}
 }
+
+export const deleteHistoryController = async (req, res) => {
+	const { id } = req.params
+	try {
+		const user = await UserModel.findById(id)
+		if (!user) {
+			throw Error("User not found")
+		}
+		user.histories = []
+		await user.save()
+		res.status(200).json({
+			success: true,
+			message: "All histories cleared"
+		})
+	} catch (error) {
+		res.status(500).json({
+			error: error.message
+		})
+	}
+}

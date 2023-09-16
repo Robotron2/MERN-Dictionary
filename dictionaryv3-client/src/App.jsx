@@ -6,6 +6,7 @@ import Register from "./pages/Auth/Register"
 import Word from "./pages/user/Word"
 import PrivateRoute from "./components/Routes/PrivateRoute"
 import History from "./pages/user/History"
+import HistorySearch from "./pages/user/HistorySearch"
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 				<Route path="/user" element={<PrivateRoute />}>
 					<Route path="word" element={<Word />} />
 					<Route path="history" element={<History />} />
+					<Route path="history/:word" element={<HistorySearch />} />
 				</Route>
 			</Routes>
 		</>
